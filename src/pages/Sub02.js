@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Sub02 = () => {
-    return (
-        <div>Sub02</div>
-    )
-}
+const Sub02 = ({ content }) => {
+  return (
+    <section>
+      {console.log(content[0].des)}
+      dsfafasfdds
+    </section>
+  );
+};
 
-export default Sub02
+export default Sub02;
