@@ -5,6 +5,8 @@ import "swiper/css";
 import styled from "styled-components";
 import "../css/Main.scss";
 
+import { Link } from "react-router-dom";
+
 const MAINSLIDRE = [
   {
     id: 1,
@@ -95,6 +97,12 @@ const SlideNum = styled.div`
 const MainVisual = () => {
   const [idxn, setIdxn] = useState();
   const MS = useRef(null);
+  const MAINLINK = [
+    { tit: "깔끔이 청소소개", link: "/sub01" },
+    { tit: "아파트입주청소", link: "/sub02" },
+    { tit: "이사/상가청소", link: "/sub03" },
+    { tit: "청소 갤러리", link: "/sub04" },
+  ];
   return (
     <section className="MainVisual">
       <Swiper
@@ -152,11 +160,16 @@ const MainVisual = () => {
         </SlideNum>
       </div>
       <ul className="main__link inner">
-        <li>01</li>
-        <li>02</li>
-        <li>03</li>
-        <li>04</li>
-        <li>05</li>
+        {MAINLINK.map((link, idx) => (
+          <li key={link.idx}>
+            <Link to={link.link}>
+              <div className="case">
+                <span>{link.tit}</span>
+              </div>
+            </Link>
+          </li>
+        ))}
+        <li></li>
       </ul>
     </section>
   );

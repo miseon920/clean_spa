@@ -1,26 +1,69 @@
 .MainVisual {
-    position: relative;
-    height: 650px;
-    background: url(../../public/assets/images/main_slider01.jpg) no-repeat center top/cover;
+  position: relative;
+  height: 650px;
+  background: url(../../public/assets/images/main_slider01.jpg) no-repeat center
+    top/cover;
 
-    .MainSlide {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 600px;
-        height: 300px;
-        transform: translate(0, -50%);
-        margin: 0 0 0 -585px;
+  .MainSlide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 300px;
+    transform: translate(0, -50%);
+    margin: 0 0 0 -585px;
+  }
+
+  .boom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 300px;
+    transform: translate(0, -200px);
+    margin: 0 0 0 0;
+  }
+  .main__link {
+    display: flex;
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    li {
+      flex: 1;
+      &:last-child {
+        flex: 2;
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+      }
+      .case {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100px;
+        height: 130px;
+        color: #fff;
+        // background: url(../../public/assets/images/icon_set_w.png) no-repeat;
+      }
+      $bgColor: #da544b #f4cb4f #337689 #6fa476;
+      //$bdColor: #0341c9 #49c7b8 #002b60 #cc3370 #7c78f4 #ed983b #b255ab;
+
+      @for $i from 1 through length($bgColor) {
+        &:nth-child(#{$i}) {
+          background: nth($bgColor, $i);
+          //border-color: nth($bdColor, $i);
+          .case {
+            background-position-x: ($i - 1) * -100px !important;
+            background: url(../../public/assets/images/icon_set_w.png)
+              no-repeat;
+            text-align: center;
+          }
+        }
+      }
     }
-
-    .boom {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 600px;
-        height: 300px;
-        transform: translate(0, -200px);
-        margin: 0 0 0 0;
-    }
-
+  }
 }
