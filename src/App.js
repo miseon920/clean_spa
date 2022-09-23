@@ -19,6 +19,13 @@ const url = "https://api.github.com/users";
 const App = () => {
   const MAINSLIDRE = [
     {
+      id: 0,
+      tit: "깔끔이청소 소개",
+      con: "신축 아파트나 빌라 등 입주 전 상태에서의 실내 청소",
+      des: "보양지 제거, 공사먼지 제거, 오염 제거, 시멘트가루 제거 등 구석구석 세밀하게 청소하는 서비스로 가족의 건강을 위해서 입주 전에 꼭 해야 하는 서비스입니다.",
+      link: "/sub01",
+    },
+    {
       id: 1,
       tit: "아파트입주청소",
       con: "신축 아파트나 빌라 등 입주 전 상태에서의 실내 청소",
@@ -53,13 +60,13 @@ const App = () => {
       <Header />
       {/* {console.log(user)} */}
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/sub01" element={<Sub01 />} />
+        <Route path="/" element={<Main content={MAINSLIDRE} />} />
+        <Route path="/sub01" element={<Sub01 content={MAINSLIDRE} />} />
         <Route path="/sub02" element={<Sub02 content={MAINSLIDRE} />} />
-        <Route path="/sub03" element={<Sub03 />} />
-        <Route path="/sub04" element={<Sub04 />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/sub03" element={<Sub03 content={MAINSLIDRE} />} />
+        <Route path="/sub04" element={<Sub04 content={MAINSLIDRE} />} />
+        <Route path="/board" element={<Board content={MAINSLIDRE} />} />
+        {/* <Route path="/detail/:id" element={<Detail />} /> */}
       </Routes>
       <Footer />
     </Wrapper>
