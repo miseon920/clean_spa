@@ -1,155 +1,173 @@
 .MainVisual {
-  position: relative;
-  height: 650px;
-  background: url(../../public/assets/images/main_slider01.jpg) no-repeat center
-    top/cover;
+    position: relative;
+    height: 650px;
+    background: url(../../public/assets/images/main_slider01.jpg) no-repeat center top/cover;
 
-  .MainSlide {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 300px;
-    transform: translate(0, -50%);
-    margin: 0 0 0 -585px;
-  }
+    .MainSlide {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 300px;
+        transform: translate(0, -50%);
+        margin: 0 0 0 -585px;
+        white-space: pre-wrap;
+    }
 
-  .boom {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 300px;
-    transform: translate(0, -200px);
-    margin: 0 0 0 0;
-  }
-  $bgColor: #da544b #f4cb4f #337689 #6fa476 #f6f6f6;
-  //$bdColor: #0341c9 #49c7b8 #002b60 #cc3370 #7c78f4 #ed983b #b255ab;
-  .main__link {
-    display: flex;
-    position: absolute;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    align-items: center;
-    li {
-      flex: 1;
-      &:last-child {
-        flex: 2;
-        a {
-          justify-content: flex-end;
-          height: auto;
+    .boom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 300px;
+        transform: translate(0, -200px);
+        margin: 0 0 0 0;
+    }
+
+    .main__link {
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        display: flex;
+        transform: translateX(-50%);
+        background: #f00;
+
+
+        li {
+            flex: 1;
+
+            &:last-child {
+                flex: 2;
+            }
+
+            &>a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+            }
+
+            .case {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100px;
+                height: 130px;
+                color: #fff;
+                background-image: url(../../public/assets/images/icon_set_w.png);
+                background-repeat: no-repeat;
+            }
         }
-        .customer {
-          text-align: right;
-          padding: 50px 30px 0 0;
-          height: 200px;
-          $color: #337689;
-          a {
-            color: $color;
-          }
-          strong {
-            color: $color;
+
+        $bg-color : #da544b,
+        #f4cb4f,
+        #337689,
+        #6fa476,
+        #f4f4f4;
+
+        @for $i from 1 to 5 {
+            li:nth-child(#{$i}) .case {
+                background-position-x: ($i - 1) * -100px;
+            }
+        }
+
+        @each $bg in $bg-color {
+            //index 값을 구하기
+            $idx: index($bg-color, $bg);
+
+            li:nth-child(#{$idx}) {
+                background-color: $bg;
+            }
+        }
+
+    }
+
+    .customer {
+        $color : #337689;
+        position: relative;
+        padding: 50px 30px 0 0;
+        text-align: right;
+
+        strong {
             display: block;
-            font-size: 30px;
+            font-size: 40px;
             font-weight: 600;
-            margin-bottom: 15px;
-          }
-          p span {
-            display: block;
+            margin: 0 0 15px 0;
+            color: $color;
+        }
+
+        p {
             line-height: 1.45;
-          }
-          i {
+        }
+
+        i {
             position: absolute;
             top: -30px;
             right: 30px;
-            color: #fff;
             background: $color;
+            color: #fff;
             font-size: 40px;
             padding: 10px;
             border-radius: 50%;
-          }
         }
-      }
-      a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-      }
-      .case {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        width: 100px;
-        height: 130px;
-        color: #fff;
-        // background: url(../../public/assets/images/icon_set_w.png) no-repeat;
-      }
-
-      @for $i from 1 through length($bgColor) {
-        &:nth-child(#{$i}) {
-          background: nth($bgColor, $i);
-          //border-color: nth($bdColor, $i);
-          .case {
-            background-position-x: ($i - 1) * -100px !important;
-            background: url(../../public/assets/images/icon_set_w.png)
-              no-repeat;
-            text-align: center;
-          }
-        }
-      }
     }
-  }
+
 }
 
 .MainContent {
-  padding: 150px 0 100px;
-  background: linear-gradient(transparent 50%, #f7f7f7 50%);
-  .inner {
-    display: flex;
-    gap: 30px;
-    & > * {
-      flex: 1;
+    padding: 150px 0 100px 0;
+    background: linear-gradient(to top, #f4f4f4 50%, transparent 50%);
+
+    .inner {
+        display: flex;
+        gap: 30px;
+
+        &>* {
+            flex: 1;
+        }
+
+        figure {
+            margin: 0 0 30px 0;
+            border-radius: 50px 0;
+            overflow: hidden;
+        }
+
+        strong {
+            position: relative;
+            display: block;
+            font-size: 25px;
+            margin: 0 0 30px 0;
+
+            &::before {
+                content: "MORE";
+                position: absolute;
+                top: -50px;
+                right: 30px;
+                background: rgba(244, 203, 79, 0.5);
+                color: #fff;
+                border-radius: 50%;
+                font-size: 12px;
+                font-weight: 700;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                width: 60px;
+                height: 1px;
+                background: #da544b;
+                margin: 15px 0;
+            }
+        }
+
+        p {
+            font-size: 13px;
+            font-weight: 500;
+        }
     }
-    figure {
-      border-radius: 30px 0 50px;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
-    strong {
-      display: block;
-      font-size: 25px;
-      margin-bottom: 30px;
-      position: relative;
-      &::before {
-        display: block;
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        font-size: 15px;
-        text-align: center;
-        content: "MORE";
-        position: absolute;
-        top: -100px;
-        right: 30px;
-        background: rgba(244, 202, 78, 0.5);
-        color: #fff;
-        border-radius: 50%;
-      }
-      &::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 1px;
-        background: #da544b;
-        margin: 15px 0;
-      }
-    }
-    p {
-      font-size: 13px;
-      font-weight: 500;
-      word-break: keep-all;
-    }
-  }
 }
